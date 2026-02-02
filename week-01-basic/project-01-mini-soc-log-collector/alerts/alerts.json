@@ -1,0 +1,2 @@
+{"rule": "SSH Successful Login", "severity": "LOW", "description": "User 'manoj' logged in successfully from 192.168.1.104.", "evidence": "Access granted", "detection_time": "2026-02-02T08:00:11.881740"}
+{"rule": "Suspicious Privilege Escalation", "severity": "MEDIUM", "description": "User 'manoj' executed a sudo command.", "evidence": "/usr/bin/tail -f /var/log/auth.log", "detection_time": "2026-02-02T08:00:12.382336"}

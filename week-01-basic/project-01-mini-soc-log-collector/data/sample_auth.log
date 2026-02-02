@@ -1,0 +1,4 @@
+2026-02-02T07:29:29.927768+00:00 ubuntu sshd[32767]: Accepted publickey for manoj from 192.168.1.104 port 16906 ssh2
+2026-02-02T07:29:50.640996+00:00 ubuntu sudo:     manoj : TTY=pts/1 ; PWD=/home/manoj ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/auth.log
+2026-02-02T07:32:37.005265+00:00 ubuntu sshd[33003]: Invalid user hacker from 192.168.1.104 port 61664
+2026-02-02T07:32:43.708689+00:00 ubuntu sshd[33003]: Failed password for invalid user hacker from 192.168.1.104 port 61664 ssh2
