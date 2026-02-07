@@ -100,3 +100,38 @@ cat alerts/alerts.json
 ### 5. JSON Alert Output
 *The final evidence stored for SOC analysts.*
 ![JSON Alerts](screenshots/alerts_json.png)
+
+
+---
+
+### 🚀 Week 1 - Project 2 | Security Incident Response Update
+
+**Objective:** Upgrade the SOC from simple detection (Tier-1) to deep investigation (Tier-2). Added automated risk scoring, attack timeline reconstruction, and incident reporting.
+
+#### 🕵️‍♂️ New Forensic Capabilities
+
+1.  **Automated Attack Grouping:**
+    * Instead of 100 separate alerts, the system groups them into **One Attack Chain** per IP.
+
+2.  **Kill Chain Timeline:**
+    * Reconstructs the attacker's steps chronologically:
+    * `Failed Login (root)` -> `Failed Login (admin)` -> `Successful Login (hacker)`
+
+3.  **Risk Scoring Engine (UEBA):**
+    * Calculates a threat score (0-100) based on behavior context.
+    * **+10** per attempt | **+20** for targeting root | **+40** for successful breach.
+
+#### 📊 Sample Investigation Report
+*Generated automatically by `src/investigation_reporter.py`*
+
+```json
+{
+    "incident_id": "INC-192-168-1-200-1770465252",
+    "risk_score": 100,
+    "severity": "CRITICAL",
+    "summary": "Brute Force attack followed by Successful Login",
+    "recommended_actions": [
+        "Block IP 192.168.1.200",
+        "Reset password for user: hacker"
+    ]
+}
