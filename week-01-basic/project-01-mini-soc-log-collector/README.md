@@ -231,3 +231,35 @@ It specifically hunts for multi-stage Kill Chains, such as **Credential Compromi
         "technique": "T1548 (Privilege Escalation)"
     }
 ]
+
+```
+
+---
+
+### 🚀 Week 3 - Project 2 | Behavioral Baseline Engine (Mini UEBA)
+
+**Objective:** Transition the SOC from purely rule-based detection ("What happened?") to behavior-based anomaly detection ("Is this normal?"), simulating Enterprise UEBA.
+
+#### 🧠 Profiling & Anomaly Detection
+The system mathematically profiles normal user behavior over time to establish a baseline. It evaluates new sessions against this model using statistical deviations rather than static thresholds.
+
+**Baseline Metrics Tracked:**
+* Average Login Hour (with Standard Deviation)
+* Commonly associated Source IPs
+* Average Failed Authentication rate
+* Average Privilege Escalation (`sudo`) rate
+
+#### 📊 Sample UEBA Incident
+*Generated when a session deviates significantly from the mathematical baseline.*
+
+```json
+"anomalies": [
+    "Login at abnormal hour (3:00 vs avg 9.71)",
+    "New, unknown source IP detected (82.146.45.10)",
+    "Spike in failed logins (3 vs daily avg 0.5)",
+    "Spike in sudo usage (2 vs daily avg 0.5)"
+],
+"risk_score": 100,
+"severity": "HIGH",
+"confidence": "MEDIUM",
+"reason": "Behavior deviates significantly from baseline model."

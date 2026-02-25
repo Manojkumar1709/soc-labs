@@ -1,0 +1,11 @@
+{
+    "manoj": {
+        "avg_login_hour": 9.71,
+        "std_dev_hour": 0.45,
+        "avg_failed_attempts_per_day": 0.14,
+        "avg_sudo_per_day": 0.14,
+        "common_source_ips": [
+            "192.168.1.100"
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "incident_id": "INC-UEBA-001",
+    "user": "manoj",
+    "anomalies": [
+        "Login at abnormal hour (3:00 vs avg 9.71)",
+        "New, unknown source IP detected (82.146.45.10)",
+        "Spike in failed logins (3 vs daily avg 0.5)",
+        "Spike in sudo usage (2 vs daily avg 0.5)"
+    ],
+    "risk_score": 100,
+    "severity": "HIGH",
+    "confidence": "MEDIUM",
+    "reason": "Behavior deviates significantly from baseline model."
+}
