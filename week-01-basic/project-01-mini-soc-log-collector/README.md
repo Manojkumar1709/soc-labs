@@ -135,3 +135,35 @@ cat alerts/alerts.json
         "Reset password for user: hacker"
     ]
 }
+```
+
+----
+
+### 🚀 Week 2 - Project 1 | MITRE ATT&CK Mapping Engine
+
+**Objective:** Upgrade the SOC from basic detection to an Enterprise-Grade Threat Intelligence platform by automatically mapping attacker behavior to the MITRE ATT&CK framework.
+
+#### 🧠 Detection Engineering Logic
+The system analyzes the attack sequence and applies multi-technique mapping:
+* **T1110 (Brute Force) -> Credential Access:** Applied when multiple failed logins are detected from a single source.
+* **T1078 (Valid Accounts) -> Persistence:** Applied *only* if the brute force is immediately followed by a successful login.
+* **T1021 (Remote Services) -> Lateral Movement:** Applied because the breach occurred over an SSH session.
+
+#### 📊 Sample Enriched Report (Snippet)
+```json
+"mitre_attack": {
+    "techniques": [
+        {
+            "technique_id": "T1110",
+            "technique_name": "Brute Force",
+            "tactic": "Credential Access"
+        },
+        {
+            "technique_id": "T1078",
+            "technique_name": "Valid Accounts",
+            "tactic": "Persistence / Initial Access"
+        }
+    ],
+    "confidence": "HIGH"
+}
+

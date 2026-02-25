@@ -1,0 +1,72 @@
+{
+    "incident_id": "INC-192-168-1-200-1770465252",
+    "generated_at": "2026-02-07T11:54:12.133358",
+    "status": "OPEN",
+    "summary": "CRITICAL Brute Force attack detected from 192.168.1.200 targeting 3 users.",
+    "attacker": {
+        "ip": "192.168.1.200",
+        "pattern": "Brute Force -> Successful Login",
+        "tools_suspected": "Hydra / Medusa / Custom Script",
+        "intent": "Credential Theft & Persistence"
+    },
+    "risk_assessment": {
+        "risk_score": 100,
+        "severity_label": "CRITICAL",
+        "breakdown": {
+            "attempts_score": 50,
+            "high_value_target": true,
+            "successful_breach": true
+        }
+    },
+    "timeline": [
+        {
+            "time": "2026-02-07T11:11:42.656207",
+            "event": "SSH Brute Force Detected",
+            "user_targeted": "user1",
+            "severity": "HIGH",
+            "details": "IP 192.168.1.200 failed to login 3 times."
+        },
+        {
+            "time": "2026-02-07T11:11:43.156623",
+            "event": "SSH Brute Force Detected",
+            "user_targeted": "db_admin",
+            "severity": "HIGH",
+            "details": "IP 192.168.1.200 failed to login 4 times."
+        },
+        {
+            "time": "2026-02-07T11:11:43.657372",
+            "event": "SSH Successful Login",
+            "user_targeted": "hacker",
+            "severity": "LOW",
+            "details": "User 'hacker' logged in successfully from 192.168.1.200."
+        }
+    ],
+    "recommended_actions": [
+        "Block IP 192.168.1.200 on Firewall immediately.",
+        "Reset passwords for affected users: hacker, user1, db_admin",
+        "Check /var/log/auth.log for lateral movement."
+    ],
+    "mitre_attack": {
+        "techniques": [
+            {
+                "technique_id": "T1110",
+                "technique_name": "Brute Force",
+                "tactic": "Credential Access",
+                "description": "Adversaries may use brute force techniques to gain access to accounts."
+            },
+            {
+                "technique_id": "T1078",
+                "technique_name": "Valid Accounts",
+                "tactic": "Persistence / Initial Access",
+                "description": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion."
+            },
+            {
+                "technique_id": "T1021",
+                "technique_name": "Remote Services",
+                "tactic": "Lateral Movement",
+                "description": "Adversaries may use Valid Accounts to log into a service specifically designed to accept remote connections, such as SSH."
+            }
+        ],
+        "confidence": "HIGH"
+    }
+}
