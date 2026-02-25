@@ -167,3 +167,27 @@ The system analyzes the attack sequence and applies multi-technique mapping:
     "confidence": "HIGH"
 }
 
+---
+
+### 🚀 Week 2 - Project 2 | Threat Intelligence (TI) Fusion Engine
+
+**Objective:** Integrate external Threat Intelligence to dynamically adjust risk scores and reduce SOC analyst fatigue using automated Indicator of Compromise (IOC) enrichment.
+
+#### 🧠 TI Risk Adjustment Logic
+* **IP Reputation Lookup:** Queries an AbuseIPDB-style database for the attacker's source IP.
+* **Dynamic Risk Modification:** * Abuse Score > 80: **+30 Risk Points**
+  * Abuse Score > 50: **+20 Risk Points**
+  * Known Good IP: **-10 Risk Points**
+* **Automated Escalation:** If the fused risk score hits >= 90, the incident is automatically escalated to **CRITICAL**, and an urgent edge-firewall block action is injected.
+
+#### 📊 Threat Intel Payload (Snippet)
+```json
+"threat_intelligence": {
+    "ip_reputation": {
+        "abuse_confidence_score": 85,
+        "total_reports": 24,
+        "country_code": "RU",
+        "is_malicious": true
+    },
+    "risk_modifier": "+30"
+}
