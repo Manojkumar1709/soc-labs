@@ -191,3 +191,43 @@ The system analyzes the attack sequence and applies multi-technique mapping:
     },
     "risk_modifier": "+30"
 }
+```
+
+---
+
+### 🚀 Week 3 - Project 1 | Multi-Stage Event Correlation Engine
+
+**Objective:** Upgrade the SOC to Tier-2 maturity by implementing an event correlation engine. This module reduces alert fatigue by grouping independent logs into chronological attack chains, mimicking enterprise SIEM behavior.
+
+#### 🧠 Correlation Logic & Attack Chaining
+Instead of triggering single alerts, the system groups events by **Source IP**, **Target User**, and **Time Window**. 
+
+It specifically hunts for multi-stage Kill Chains, such as **Credential Compromise & Privilege Escalation**:
+1. **T1110 (Brute Force):** Detects multiple `SSH_FAILED_LOGIN` events.
+2. **T1078 (Valid Accounts):** Detects a subsequent `SSH_SUCCESS_LOGIN`.
+3. **T1548 (Privilege Escalation):** Detects `SUDO_COMMAND` execution following the login.
+
+#### 📊 Risk Escalation
+* 1 Stage = MEDIUM Severity
+* 2 Stages = HIGH Severity
+* 3 Stages = **CRITICAL Severity**
+
+#### 📂 Sample Correlated Incident (Snippet)
+```json
+"attack_chain": [
+    {
+        "stage": 1,
+        "event_type": "SSH_FAILED_LOGIN",
+        "technique": "T1110 (Brute Force)"
+    },
+    {
+        "stage": 2,
+        "event_type": "SSH_SUCCESS_LOGIN",
+        "technique": "T1078 (Valid Accounts)"
+    },
+    {
+        "stage": 3,
+        "event_type": "SUDO_COMMAND",
+        "technique": "T1548 (Privilege Escalation)"
+    }
+]

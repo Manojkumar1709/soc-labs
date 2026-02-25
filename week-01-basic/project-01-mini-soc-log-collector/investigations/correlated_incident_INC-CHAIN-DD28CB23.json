@@ -1,0 +1,31 @@
+{
+    "incident_id": "INC-CHAIN-DD28CB23",
+    "generated_at": "2026-02-25T14:11:25.552952",
+    "summary": "Multi-stage Credential Compromise & Privilege Escalation detected.",
+    "entities": {
+        "source_ip": "10.0.0.5",
+        "target_user": "hacker"
+    },
+    "confidence": "HIGH",
+    "severity": "CRITICAL",
+    "attack_chain": [
+        {
+            "stage": 1,
+            "event_type": "SSH_FAILED_LOGIN",
+            "technique": "T1110 (Brute Force)",
+            "timestamp": "2026-02-25T14:00:01Z"
+        },
+        {
+            "stage": 2,
+            "event_type": "SSH_SUCCESS_LOGIN",
+            "technique": "T1078 (Valid Accounts)",
+            "timestamp": "2026-02-25T14:00:10Z"
+        },
+        {
+            "stage": 3,
+            "event_type": "SUDO_COMMAND",
+            "technique": "T1548 (Privilege Escalation)",
+            "timestamp": "2026-02-25T14:02:15Z"
+        }
+    ]
+}

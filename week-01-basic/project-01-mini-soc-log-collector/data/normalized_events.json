@@ -1,0 +1,5 @@
+{"timestamp": "2026-02-25T14:00:01Z", "host": "ubuntu", "event_type": "SSH_FAILED_LOGIN", "user": "root", "source_ip": "10.0.0.5"}
+{"timestamp": "2026-02-25T14:00:03Z", "host": "ubuntu", "event_type": "SSH_FAILED_LOGIN", "user": "admin", "source_ip": "10.0.0.5"}
+{"timestamp": "2026-02-25T14:00:05Z", "host": "ubuntu", "event_type": "SSH_FAILED_LOGIN", "user": "hacker", "source_ip": "10.0.0.5"}
+{"timestamp": "2026-02-25T14:00:10Z", "host": "ubuntu", "event_type": "SSH_SUCCESS_LOGIN", "user": "hacker", "source_ip": "10.0.0.5"}
+{"timestamp": "2026-02-25T14:02:15Z", "host": "ubuntu", "event_type": "SUDO_COMMAND", "user": "hacker", "source_ip": "10.0.0.5", "command": "cat /etc/shadow"}
